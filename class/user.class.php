@@ -18,4 +18,19 @@ class User extends DB {
         return (!isset($res['error'])) ? true: false;
 
     }
+
+    public function signin($email, $pwd) {
+        $sql = "SELECT * FROM users WHERE email = :email and pwd = :pwd";
+        $sql = $this->pdo->prepare($sql);
+        $sql->bindValue(':email', $email);
+        $sql->bindValue(':pwd', md5($pwd));
+        $sql->execute();
+
+        if($sql->rowCount() > 0) {
+            $res = $sql->fetch();
+            $_SESSION['cLogin'] = $res['id']; 
+            return true;
+        }
+        return false;
+    }
 };

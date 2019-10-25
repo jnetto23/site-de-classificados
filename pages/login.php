@@ -2,6 +2,34 @@
     <main class="container">
     <form id="form-signin" method='POST'>
             <span class="text-center text-uppercase h5">Login</span>
+            <?php 
+                require './class/user.class.php';
+                $u = new User();
+
+                if(isset($_POST['email']) && !empty($_POST['email'])) {
+                    $email = addslashes(strtolower(trim($_POST['email'])));
+                    $pwd   = addslashes($_POST['pwd']);
+
+                    if(!empty($email) && !empty($pwd)) {
+                        if(!$u->signin($email, $pwd)) { 
+                            ?>
+                                <div class="alert alert-danger text-center">
+                                    Email e/ou senha inválidos.
+                                </div>
+                            <?php
+                        } else {
+                            header('Location: ./');
+                        }; 
+                    } else {
+                        ?>
+                            <div class="alert alert-danger text-center">
+                                Preencha todos os campos!
+                            </div>
+                        <?php
+
+                    };
+                };
+            ?>
 
             <div class="form-group">
                 <label class="mb-1" for="email">Email:</label>
