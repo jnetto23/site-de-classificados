@@ -1,0 +1,10 @@
+#form-signup {
+    display: flex;
+    flex-direction: column;
+    margin: 30px auto;
+    min-width: 300px;
+    width: 450px;
+    padding: 25px;
+    border: 0.5px solid #ccc;
+    border-radius: 10px;
+}
