@@ -55,7 +55,7 @@ BEGIN
 	DECLARE viduser INT;
 	START TRANSACTION;
     IF EXISTS (SELECT id FROM users WHERE email = pemail) THEN
-		SELECT "Email já cadastrado" AS 'Error';
+		SELECT "Email já cadastrado" AS 'error';
         ROLLBACK;
 	ELSE
         INSERT INTO users (name, email, pwd) VALUES (pname, pemail, ppwd);
