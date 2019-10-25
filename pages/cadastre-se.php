@@ -13,26 +13,39 @@
                     $pwd   = addslashes($_POST['pwd']);
 
                     if(!empty($name) && !empty($email) && !empty($pwd)) {
-                        $u->signup($name, $email, $pwd);
+                        if(!$u->signup($name, $email, $pwd)) { 
+                            ?>
+                                <div class="alert alert-warning text-center">
+                                    Email já Cadastrado.
+                                    <a class="alert-link" href="./login">Faça o login agora.</a>
+                                </div>
+                            <?php
+                        } else {
+                            ?>
+                                <div class="alert alert-success text-center">
+                                    <strong>Parabéns!</strong> Usuário cadastrado com sucesso.
+                                    <a class="alert-link" href="./login">Faça o login agora.</a>
+                                </div>
+                            <?php
+                        }; 
                     } else {
                         ?>
-                        
-                            <span class="alert alert-danger text-center">Preencha todos os campos.</span>
-
+                            <div class="alert alert-danger text-center">
+                                Preencha todos os campos!
+                            </div>
                         <?php
+
                     };
                 };
             ?>
 
-
-
             <div class="form-group">
                 <label class="mb-1" for="name">Nome:</label>
-                <input class="form-control" type="text" name="name" placeholder="Informe seu Nome" required autofocus value="João MARQUES da Silva Netto">
+                <input class="form-control" type="text" name="name" placeholder="Informe seu Nome" required autofocus>
             </div>
             <div class="form-group">
                 <label class="mb-1" for="email">Email:</label>
-                <input class="form-control" type="email" name="email" placeholder="Informe seu Email" required value="jnetto@fyyb.com.br">
+                <input class="form-control" type="email" name="email" placeholder="Informe seu Email" required>
             </div>
             <div class="form-group">
                 <label class="mb-1" for="pwd">Senha:</label>
@@ -44,7 +57,8 @@
                 <input class="form-control helper" type="password" name="pwd2" placeholder="Confirme sua senha" minlength="6" required>
                 <small class="d-none form-text text-muted">informe a mesma senha digitada anteriormente.</small>
             </div>
-            <input type="submit" class="btn btn-success mt-2 mb-3" value="Cadastrar">
+            <input type="submit" class="btn btn-primary mt-2 mb-3" value="Cadastrar">
+            <span class="text-center">Já tem cadastro? Faça seu <a href="./login">Login</a></span>
         </form>
     </main>
 <?php require './pages/footer.php'; ?>
