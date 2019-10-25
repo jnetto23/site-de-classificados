@@ -13,18 +13,27 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="#">Classificados</a>
+                <a class="navbar-brand" href="./">Classificados</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alterna navegação">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Cadastre-se</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Login</a>
-                        </li>
+                        <?php if(isset($_SESSION['cLogin']) && !empty($_SESSION['cLogin'])):?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./meus-anuncios">Meus Anúncios</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./sair">Sair</a>
+                            </li>
+                        <?php else: ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./cadastre-se">Cadastre-se</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./login">Login</a>
+                            </li>
+                        <?php endif; ?>
                     </ul>
                 </div>
             </div>
