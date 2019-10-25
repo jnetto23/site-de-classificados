@@ -2,7 +2,7 @@
     <main class="container">
         <form id="form-signup" method='POST'>
             <span class="text-center text-uppercase h5">Cadastre-se</span>
-
+            <hr class="divider">
             <?php 
                 require './class/user.class.php';
                 $u = new User();

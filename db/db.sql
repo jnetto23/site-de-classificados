@@ -25,12 +25,13 @@ CREATE TABLE IF NOT EXISTS categories (
     updated_at DATETIME,
     CONSTRAINT PK_categories PRIMARY KEY (id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO categories (name) VALUES ('Vestuário'), ('Eletrônicos'), ('Eletrodomésticos');
 
 DROP TABLE IF EXISTS ads;
 CREATE TABLE IF NOT EXISTS ads (
 	id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
     id_user INT(11) UNSIGNED NOT NULL,
-    id_categorie INT(11) UNSIGNED NOT NULL,
+    id_category INT(11) UNSIGNED NOT NULL,
     title VARCHAR(100) NOT NULL,
     description TEXT,
     value DEC(10,2),
@@ -40,13 +41,13 @@ CREATE TABLE IF NOT EXISTS ads (
     CONSTRAINT PK_ads PRIMARY KEY (id),
     CONSTRAINT FK_ads_users FOREIGN KEY (id_user)
 		REFERENCES users (id),
-	CONSTRAINT FK_ads_categories FOREIGN KEY (id_categorie)
+	CONSTRAINT FK_ads_categories FOREIGN KEY (id_category)
 		REFERENCES categories (id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DELIMITER $$
-DROP PROCEDURE IF EXISTS sp_users_signup $$
-CREATE PROCEDURE sp_users_signup (
+DROP PROCEDURE IF EXISTS sp_user_signup $$
+CREATE PROCEDURE sp_user_signup (
 	pname VARCHAR(100),
     pemail VARCHAR(100),
     ppwd VARCHAR(32)
@@ -66,4 +67,15 @@ BEGIN
 END $$
 DELIMITER ;
 
-call sp_users_signup('João Marques da Silva Netto', 'jnetto@fyyb.com.br', MD5('123456'));
+call sp_user_signup('João Marques da Silva Netto', 'jnetto@fyyb.com.br', MD5('123456'));
+
+DROP TABLE IF EXISTS ads_imgs;
+CREATE TABLE IF NOT EXISTS ads_imgs (
+	id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+    id_ads INT(11) UNSIGNED NOT NULL,
+    url VARCHAR(200) NOT NULL,
+    ckd TINYINT(1) DEFAULT 0,
+    CONSTRAINT PK_ads_imgs PRIMARY KEY (id),
+    CONSTRAINT FK_ads_imgs_ads FOREIGN KEY (id_ads)
+		REFERENCES ads (id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;

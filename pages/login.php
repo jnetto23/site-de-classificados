@@ -1,7 +1,8 @@
 <?php require './pages/header.php'; ?>
     <main class="container">
-    <form id="form-signin" method='POST'>
+        <form id="form-signin" method='POST'>
             <span class="text-center text-uppercase h5">Login</span>
+            <hr class="divider">
             <?php 
                 require './class/user.class.php';
                 $u = new User();
@@ -33,7 +34,7 @@
 
             <div class="form-group">
                 <label class="mb-1" for="email">Email:</label>
-                <input class="form-control" type="email" name="email" placeholder="Informe seu Email" required>
+                <input class="form-control" type="email" name="email" placeholder="Informe seu Email" required autofocus>
             </div>
             <div class="form-group">
                 <label class="mb-1" for="pwd">Senha:</label>

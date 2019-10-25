@@ -7,7 +7,7 @@ class User extends DB {
     }
 
     public function signup($name, $email, $pwd) {
-        $sql = "CALL sp_users_signup(:name, :email, :pwd)";
+        $sql = "CALL sp_user_signup(:name, :email, :pwd)";
         $sql = $this->pdo->prepare($sql);
         $sql->bindValue(':name', $name);
         $sql->bindValue(':email', $email);
