@@ -38,8 +38,32 @@ CREATE TABLE IF NOT EXISTS ads (
 	created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP(),
     updated_at DATETIME,
     CONSTRAINT PK_ads PRIMARY KEY (id),
-    CONSTRAINT FK_ads_users FOREIGN KEY (id_userads)
+    CONSTRAINT FK_ads_users FOREIGN KEY (id_user)
 		REFERENCES users (id),
 	CONSTRAINT FK_ads_categories FOREIGN KEY (id_categorie)
 		REFERENCES categories (id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS sp_users_signup $$
+CREATE PROCEDURE sp_users_signup (
+	pname VARCHAR(100),
+    pemail VARCHAR(100),
+    ppwd VARCHAR(32)
+)
+BEGIN
+	DECLARE viduser INT;
+	START TRANSACTION;
+    IF EXISTS (SELECT id FROM users WHERE email = pemail) THEN
+		SELECT "Email já cadastrado" AS 'Error';
+        ROLLBACK;
+	ELSE
+        INSERT INTO users (name, email, pwd) VALUES (pname, pemail, ppwd);
+        SET viduser = LAST_INSERT_ID();
+		COMMIT;
+		SELECT * FROM users WHERE id = viduser;	
+    END IF;
+END $$
+DELIMITER ;
+
+call sp_users_signup('João Marques da Silva Netto', 'jnetto@fyyb.com.br', MD5('123456'));
