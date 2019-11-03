@@ -1,9 +1,16 @@
 <?php
-require './class/db.class.php';
+include_once './class/db.class.php';
 
 class User extends DB {
     public function __construct() {
         parent::__construct();
+    }
+
+    public function getTotal() {
+        $users = $this->pdo->query('SELECT COUNT(id) as c FROM users');
+        $users = $users->fetch()['c'];
+
+        return $users;
     }
 
     public function signup($name, $email, $pwd) {

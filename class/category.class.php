@@ -1,5 +1,5 @@
 <?php
-require './class/db.class.php';
+include_once './class/db.class.php';
 
 class Category extends DB {
     public function __construct() {

@@ -1,6 +1,7 @@
 #form-signin,
 #form-signup,
-#form-add-ads {
+#form-add-ads,
+#form-edit-ads {
     display: flex;
     flex-direction: column;
     margin: 20px auto;
@@ -10,6 +11,11 @@
     border: 0.5px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 0 15px #ccc;
+}
+#form-add-ads,
+#form-edit-ads {
+    max-width: 100%;
+    align-items: center;
 }
 .has-error input {
     border-color: red !important;
@@ -34,5 +40,30 @@ table > thead {
 }
 
 table > tbody > tr > td {
+    vertical-align: baseline !important;
     padding: 0.5rem !important;
+    white-space: nowrap;
+}
+
+#form-add-ads .card-body input[type="radio"],
+#form-edit-ads .card-body input[type="radio"] {
+    visibility: hidden;
+}
+
+#form-add-ads .card-body label,
+#form-edit-ads .card-body label {
+    display: block;
+    border: 10px solid transparent;
+}
+#form-add-ads .card-body label:hover,
+#form-edit-ads .card-body label:hover {
+    border-color: #e6f2ff;
+}
+#form-add-ads .card-body input[type="radio"]:checked+label,
+#form-edit-ads .card-body input[type="radio"]:checked+label {
+    border-color: #99caff;
+}
+#form-add-ads .card-body img,
+#form-edit-ads .card-body img {
+    width: 100%;
 }
