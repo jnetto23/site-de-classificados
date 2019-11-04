@@ -238,6 +238,29 @@ BEGIN
 END $$
 DELIMITER ;
 
+DROP PROCEDURE IF EXISTS sp_ads_findAllById;
+DELIMITER $$
+CREATE PROCEDURE sp_ads_findAllById(
+	pid INT(11)
+)
+BEGIN
+	SELECT 
+a.id as id, a.title as title, a.description as description, a.value as value, a.state as state, 
+		b.id as id_category,
+        b.name as name_categoty,
+		GROUP_CONCAT( c.url) as imgs,
+        (SELECT url FROM ads_imgs WHERE id_ads = a.id AND ckd = 1) as imgckd,
+        d.id as id_user,
+        d.name as name_user,
+        d.email as email_user
+	FROM ads a 
+		INNER JOIN categories b ON a.id_category = b.id
+		LEFT JOIN ads_imgs c ON a.id = c.id_ads
+        LEFT JOIN users d ON a.id_user = d.id
+	WHERE a.id = pid LIMIT 1;
+END$$
+DELIMITER ;
+
 INSERT INTO categories (name) VALUES ('Vestuário'), ('Eletrônicos'), ('Eletrodomésticos');
 
 CALL sp_user_signup('João Marques da Silva Netto', 'jnetto@fyyb.com.br', MD5('123456'));
