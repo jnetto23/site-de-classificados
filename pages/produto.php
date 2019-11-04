@@ -64,7 +64,7 @@
                         <div class="d-flex flex-column justify-content-between h-100">
                             <div class="ads-description">
                                 <small class="d-block font-weight-bold font-italic">Descrição:</small>
-                                <p><?php echo $ads['description'];?></p>
+                                <p class="text-justify"><?php echo $ads['description'];?></p>
                             </div>
                             <div class="ads-details d-flex">
                                 <div class="cond mr-md-3">
