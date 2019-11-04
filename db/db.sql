@@ -247,7 +247,7 @@ BEGIN
 	SELECT 
 a.id as id, a.title as title, a.description as description, a.value as value, a.state as state, 
 		b.id as id_category,
-        b.name as name_categoty,
+        b.name as name_category,
 		GROUP_CONCAT( c.url) as imgs,
         (SELECT url FROM ads_imgs WHERE id_ads = a.id AND ckd = 1) as imgckd,
         d.id as id_user,
