@@ -61,9 +61,15 @@ class Ads extends DB {
 
     }
 
-    public function findById($id) {
+    public function findById($id, $type=1) {
         $array = array();
-        $sql = 'CALL sp_ads_findById(:id)';
+        
+        if($type === 1) {
+            $sql = 'CALL sp_ads_findById(:id)';
+        } else {
+            $sql = 'CALL sp_ads_findAllById(:id)';
+        };
+        
         $sql = $this->pdo->prepare($sql);
         $sql->bindValue(':id', $id);
         $sql->execute();

@@ -81,3 +81,11 @@ table > tbody > tr > td {
 #form-edit-ads .card-body img {
     width: 100%;
 }
+.carousel-control-prev,
+.carousel-control-next {
+    background-color: #00000012;
+}
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background-color: #0000002b !important;
+}
