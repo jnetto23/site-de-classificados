@@ -96,7 +96,7 @@
                             </div>
                             <div class="col-6">
                                 <label class="mb-1" for="value">Valor:</label>
-                                <input class="form-control text-right" type="number" name="value" placeholder="0,00" pattern="[0-9]+$" required>                
+                                <input class="form-control text-right" type="text" name="value" placeholder="0,00" pattern="[0-9]+$" required>                
                             </div>
                         </div>
                     </div>
