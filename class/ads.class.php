@@ -12,6 +12,31 @@ class Ads extends DB {
         return $ads;
     }
 
+    public function getList($p, $qtd) {
+        $array = array();
+
+        $offset = ($p - 1) * $qtd;  
+
+        $sql = "SELECT 
+            a.id as id, a.title as title, a.description as description, a.value as value, a.state as state, 
+            b.name as category, 
+            c.url as img
+        FROM ads a
+        LEFT JOIN categories b ON a.id_category = b.id
+        LEFT JOIN ads_imgs c ON a.id = c.id_ads AND c.ckd = 1
+        ORDER BY a.id DESC LIMIT $offset, $qtd";
+
+        $sql = $this->pdo->prepare($sql);
+        $sql->execute();
+
+        if($sql->rowCount() > 0) {
+            $array = $sql->fetchAll();
+        };
+
+        return $array;
+
+    }
+
     public function getUserList() {
         $array = array();
 
