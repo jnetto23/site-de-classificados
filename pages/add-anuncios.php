@@ -6,7 +6,7 @@
     };
     require './class/category.class.php';
 ?>
-    <main class="container mt-2">
+    <main role="main" class="container mt-2 flex-shrink-0 mb-5">
         <form id="form-add-ads" method='POST' enctype="multipart/form-data">
             <span class="text-center text-uppercase h5">Adicionar Novo Anúncio</span>
             <hr class="divider">
@@ -96,7 +96,7 @@
                             </div>
                             <div class="col-6">
                                 <label class="mb-1" for="value">Valor:</label>
-                                <input class="form-control text-right" type="text" name="value" placeholder="0,00" pattern="[0-9]+$" required>                
+                                <input class="form-control text-right" type="text" name="value" placeholder="0,00" pattern="\.\,\[0-9]+$" required>                
                             </div>
                         </div>
                     </div>

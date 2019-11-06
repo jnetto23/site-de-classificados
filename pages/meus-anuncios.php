@@ -6,7 +6,7 @@
     };
 ?>
 
-    <main class="container mt-5">
+    <main role="main" class="container mt-2 flex-shrink-0 mb-5">
         <h3 class="text-center">Meus Anúncios</h3>
         <div class="d-flex">
             <a href="./add-anuncios" class="btn btn-primary ml-auto">Adicionar Novo</a>

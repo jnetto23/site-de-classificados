@@ -34,7 +34,7 @@
     $c = (new Category())->getList();
 
 ?>
-    <main>
+    <main role="main" class="flex-shrink-0 mb-5">
         <div class="jumbotron">
             <div class="container">
                 <h2>Nós temos hoje <?php echo $nAds;?> anúncios.</h2>

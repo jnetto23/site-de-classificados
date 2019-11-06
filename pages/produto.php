@@ -12,7 +12,7 @@
     
     $ads = (new Ads())->findById($id, 2);
 ?>
-    <main>
+    <main role="main" class="container mt-2 flex-shrink-0 mb-5">
         <div class="container content mt-3">
             <div class="row">
                 <div class="col-12 col-md-4">
@@ -56,7 +56,11 @@
                         <hr class="divider my-2"/>
                        
                         <div class="d-block mb-3">
-                            <a class="px-2 py-1 font-italic" style="background-color:#98c3f19c; border-radius:3px" href="#">
+                            <a class="px-2 py-1 font-italic" style="background-color:#98c3f19c; border-radius:3px" 
+                            href="./?<?php 
+                            $a['filter']['category'] = $ads['id_category'];
+                            echo http_build_query($a);
+                            ?>">
                                 <small style="vertical-align: text-top;">#<?php echo $ads['name_category'];?></small>
                             </a>
                         </div>

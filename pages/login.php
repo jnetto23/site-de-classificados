@@ -1,5 +1,5 @@
 <?php require './pages/header.php'; ?>
-    <main class="container">
+    <main role="main" class="container flex-shrink-0 mb-5">
         <form id="form-signin" method='POST'>
             <span class="text-center text-uppercase h5">Login</span>
             <hr class="divider">

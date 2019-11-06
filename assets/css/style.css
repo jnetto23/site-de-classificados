@@ -89,3 +89,7 @@ table > tbody > tr > td {
 .carousel-control-next:hover {
     background-color: #0000002b !important;
 }
+  
+.footer {
+    background-color: #343a40!important;
+}

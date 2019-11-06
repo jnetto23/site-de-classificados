@@ -19,7 +19,7 @@
         header('Location: ./meus-anuncios');
     };
 ?>
-    <main class="container mt-2">
+    <main role="main" class="container mt-2 flex-shrink-0 mb-5">
         <form id="form-edit-ads" method='POST' enctype="multipart/form-data">
             <span class="text-center text-uppercase h5">Editar Anúncio</span>
             
