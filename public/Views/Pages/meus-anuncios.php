@@ -1,7 +1,7 @@
 <div class="container">
     <h3 class="text-center">Meus Anúncios</h3>
     <div class="d-flex">
-        <a href="./add-anuncios" class="btn btn-primary ml-auto">Adicionar Novo</a>
+        <a href="<?php echo BASE_URL;?>adicionar-anuncio" class="btn btn-primary ml-auto">Adicionar Novo</a>
     </div>
     <div class="table-responsive">
         <table class="table table-bordered table-hover table-sm mt-3">
