@@ -328,7 +328,7 @@ class Ads extends Model
     private function deleteFileImgs($imgs) 
     {
         foreach($imgs as $img) {
-            unlink(BASE_URL."Assets/img/ads/".$img);
+            unlink("./Assets/img/ads/".$img);
         };
         
         return implode(',', $imgs);

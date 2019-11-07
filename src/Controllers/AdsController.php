@@ -76,7 +76,7 @@ class AdsController extends Controller
                 $data['msg']['msg']   = 'Preencha todos os campos!';
             };
         };
-        
+
         $this->loadViewInTemplate('add-anuncio', $data, 'template');
     }
 
@@ -88,7 +88,11 @@ class AdsController extends Controller
 
     public function del($id)
     {   
-        $data = array();
-        $this->loadViewInTemplate('', $data, 'template');
+        if (isset($id) && !empty($id)) {
+            $ads = new Ads();
+            $ads->delete($id);
+        };
+    
+        header('Location: '.BASE_URL.'meus-anuncios');
     }
 }
