@@ -9,6 +9,6 @@ class NotfoundController extends Controller
     public function index()
     {
         $data = array('error' => 404);
-        $this->loadViewInTemplate('404', $data, 'template');
+        $this->loadViewInTemplate('', $data, 'template');
     }
 }
