@@ -284,11 +284,12 @@ class Ads extends Model
                 // Convertendo base64 para imagem
                 $dados = base64_decode($dados);
 
+                $imgName = "./Assets/img/ads/".$name;
                 // Salva a Imagem versão original
-                file_put_contents(BASE_URL."Assets/img/ads/".$name, $dados);
+                file_put_contents($imgName, $dados);
 
                 // Redimencionando a imagem
-                list($width_orig, $height_orig) = getimagesize(BASE_URL."Assets/img/ads/".$name);
+                list($width_orig, $height_orig) = getimagesize($imgName);
                 
                 $ratio = $width_orig / $height_orig;
                 $width = 500; 
@@ -304,14 +305,14 @@ class Ads extends Model
                 $img = imagecreatetruecolor($width, $height);
                 
                 if ($tipo === 'image/jpeg') {
-                    $orig = imagecreatefromjpeg(BASE_URL."Assets/img/ads/".$name);
+                    $orig = imagecreatefromjpeg($imgName);
                 
                 } elseif ($tipo === 'image/png') {
-                    $orig = imagecreatefrompng(BASE_URL."Assets/img/ads/".$name);
+                    $orig = imagecreatefrompng($imgName);
                 };
 
                 imagecopyresampled($img, $orig, 0, 0, 0, 0, $width, $height, $width_orig, $height_orig);
-                imagejpeg($img, BASE_URL."Assets/img/ads/".$name, 100);
+                imagejpeg($img, $imgName, 100);
             }
         };
 
