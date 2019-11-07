@@ -3,7 +3,7 @@
 global $routes;
 
 $routes['/']                      = '/home/index';
-$routes['/anuncio/{:id}']         = '/home/ads/:id';
+$routes['/anuncio/{id}']          = '/home/ads/:id';
 
 $routes['/cadastre-se']           = '/auth/signup';
 $routes['/login']                 = '/auth/signin';
