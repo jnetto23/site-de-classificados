@@ -1,4 +1,6 @@
-.htaccess
+vendor
 config.php
-assets/img/ads/
-!assets/img/ads/default.png
+httpd-vhosts.conf
+
+public/Assets/img/ads/
+!public/Assets/img/ads/default.png

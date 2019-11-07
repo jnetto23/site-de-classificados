@@ -1,0 +1,4 @@
+.htaccess
+config.php
+assets/img/ads/
+!assets/img/ads/default.png

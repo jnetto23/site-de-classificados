@@ -1,0 +1,7 @@
+RewriteEngine On
+
+# ROUTER URL Rewrite
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI}::$1 ^(/.+)/(.*)::\2$
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
