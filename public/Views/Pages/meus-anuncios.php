@@ -19,7 +19,13 @@
                 <?php foreach($ads as $ad):?>
                     <tr>
                         <td class="text-center">
-                            <img src="<?php echo BASE_URL;?>Assets/img/ads/<?php echo ($ad['img']) ? $ad['img'] : 'default.png';?>" alt="<?php echo $ad['title'];?>" width="40">
+                            <img 
+                                src="<?php echo BASE_URL;?>Assets/img/ads/<?php echo ($ad['img']) ? $ad['img'] : 'default.png';?>" 
+                                onerror="this.src='<?php echo BASE_URL;?>Assets/img/ads/default.png';"
+                                alt="<?php echo $ad['title'];?>" 
+                                width="40" 
+                                height="40"
+                            >
                         </td>
                         <td><?php echo $ad['title'];?></td>
                         <td class="text-center"><?php echo ($ad['state'] === 'N') ? 'Novo' : 'Usado';?></td>

@@ -62,7 +62,13 @@
                         <?php foreach($list as $ad): ?>
                         <a href="<?php echo BASE_URL;?>anuncio/<?php echo $ad['id'];?>" class="index-table-list list-group-item list-group-item-action d-flex">
                             <div class="col-3 col-md-1 img d-flex justify-content-center">
-                                <img src="<?php echo BASE_URL;?>Assets/img/ads/<?php echo ($ad['img']) ? $ad['img'] : 'default.png';?>" alt="<?php echo $ad['title'];?>" width="40" height="40">
+                                <img 
+                                    src="<?php echo BASE_URL;?>Assets/img/ads/<?php echo ($ad['img']) ? $ad['img'] : 'default.png';?>" 
+                                    onerror="this.src='<?php echo BASE_URL;?>Assets/img/ads/default.png';"
+                                    alt="<?php echo $ad['title'];?>" 
+                                    width="40" 
+                                    height="40"
+                                >
                             </div>
                             <div class="col d-flex flex-wrap justify-content-between align-items-center p-1">
                                 <div class="details d-flex flex-column mb-1 ">
