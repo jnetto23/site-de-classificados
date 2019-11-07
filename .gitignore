@@ -1,3 +1,6 @@
 vendor
 config.php
 httpd-vhosts.conf
+
+public/Assets/img/ads/
+!public/Assets/img/ads/default.png
