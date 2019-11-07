@@ -53,6 +53,18 @@ class HomeController extends Controller
 
     public function ads($id)
     {
-        echo 'Exibir Anuncio de ID '.$id;
+        $a = new Ads();
+        $ads = $a->findById($id, 2);
+        
+        if (empty($ads['id'])) {
+            header('Location: '.BASE_URL);
+        };
+
+        $data = array(
+            'ads' => $ads 
+        );
+
+        $this->loadViewInTemplate('anuncio', $data, 'template');
+
     }
 }
