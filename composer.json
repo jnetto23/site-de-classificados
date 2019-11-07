@@ -1,0 +1,24 @@
+{
+    "name": "jnetto23/php_mvc",
+    "description":"Estrutura padrão para projetos em MVC",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Joao Netto",
+            "email": "jnetto@fyyb.com.br",
+            "role": "Developer",
+            "homepage": "https://github.com/jnetto23"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Fyyb\\": "src/"
+        },
+        "files": [
+            "./src/routes.php",
+            "environment.php",
+            "config.php"
+        ]
+    }
+}
