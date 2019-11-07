@@ -1,6 +1,6 @@
 {
-    "name": "jnetto23/php_mvc",
-    "description":"Estrutura padrão para projetos em MVC",
+    "name": "jnetto23/site-de-classificados",
+    "description":"Site simples de classificados em MVC",
     "minimum-stability": "stable",
     "license": "MIT",
     "authors": [
