@@ -226,4 +226,4 @@ function validateForm(form) {
     };
 
     return hasError();
-}; 
+};

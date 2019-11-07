@@ -33,7 +33,12 @@
                         <td class="text-center"><?php echo $ad['category'];?></td>
                         <td class="text-center">
                             <a href="<?php echo BASE_URL;?>editar-anuncio/<?php echo $ad['id'];?>" class="btn btn-warning">Editar</a>
-                            <a href="<?php echo BASE_URL;?>excluir-anuncio/<?php echo $ad['id'];?>" class="btn btn-danger">Excluir</a>
+                            <button 
+                                type="button" 
+                                class="btn btn-danger" 
+                                data-href="<?php echo BASE_URL;?>excluir-anuncio/<?php echo $ad['id'];?>">
+                                    Excluir
+                            </button>
                         </td>
                     </tr>
                 <?php endforeach;?>
@@ -41,3 +46,15 @@
         </table>
     </div>
 </div>
+
+<script>
+    let btns = document.querySelectorAll('button');
+    Array.prototype.forEach.call(btns, btn => {
+        btn.addEventListener('click', (e) => {
+            if(confirm("Tem certeza que deseja excluir este anúncio?")) {
+                let link = ((e.target).getAttribute('data-href'));
+                window.location.href = link;
+            };
+        });
+    });
+</script>
