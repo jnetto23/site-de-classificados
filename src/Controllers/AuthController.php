@@ -10,7 +10,31 @@ class AuthController extends Controller
     public function signup()
     {   
         $data = array();
-        $this->loadViewInTemplate('', $data, 'template');
+        
+        if (isset($_POST['name'])) {
+            if (empty($_POST['name']) || empty($_POST['email']) || empty($_POST['pwd'])) {
+                $data['msg']['class'] = 'danger';
+                $data['msg']['msg']   = 'Preencha todos os campos!';
+                
+            } else {
+                $user  = new User();
+                $name  = addslashes(ucwords(strtolower(trim($_POST['name']))));
+                $email = addslashes(strtolower(trim($_POST['email'])));
+                $pwd   = addslashes($_POST['pwd']);
+                
+                if(!$user->signup($name, $email, $pwd)) {
+                    $data['msg']['class'] = 'warning';
+                    $data['msg']['msg'] = "Email já Cadastrado. 
+                    <a class='alert-link' href='".BASE_URL."login'>Faça o login agora.</a>";
+                } else {
+                    $data['msg']['class'] = 'success';
+                    $data['msg']['msg']   = "<strong>Parabéns!</strong> Usuário cadastrado com sucesso.
+                    <a class='alert-link' href='".BASE_URL."login'>Faça o login agora.</a>";
+                };
+            };
+        };      
+        
+        $this->loadViewInTemplate('signup', $data, 'template');
     }
     
     public function signin()
@@ -41,7 +65,7 @@ class AuthController extends Controller
     
     public function logout()
     {   
-        $data = array();
-        $this->loadViewInTemplate('', $data, 'template');
+        unset($_SESSION['cLogin']);
+        header('Location: ./');
     }
 }
