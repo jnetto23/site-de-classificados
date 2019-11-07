@@ -46,9 +46,9 @@ class AdsController extends Controller
                 isset($_POST['value'])    && !empty($_POST['value'])    &&
                 isset($_POST['state'])    && !empty($_POST['state'])
             ) {
-                $title    = addslashes($_POST['title']);
+                $title    = trim(addslashes($_POST['title']));
                 $category = addslashes($_POST['category']);
-                $desc     = addslashes($_POST['desc']);
+                $desc     = trim(addslashes($_POST['desc']));
                 $value    = str_replace(',', '.', str_replace('.', '', addslashes($_POST['value'])));
                 $state    = addslashes($_POST['state']);
                 
@@ -80,10 +80,62 @@ class AdsController extends Controller
         $this->loadViewInTemplate('add-anuncio', $data, 'template');
     }
 
-    public function adit($id)
+    public function edit($id)
     {   
-        $data = array();
-        $this->loadViewInTemplate('', $data, 'template');
+        $a = new Ads();
+        $ads = $a->findById($id);
+        
+        $c = new Category();
+        $cats = $c->getList();
+
+        if (count($ads) === 0) {
+            header('Location: '.BASE_URL.'meus-anuncios');
+        };
+        
+        $data = array(
+            'ads' => $ads,
+            'cats'=> $cats
+        );
+
+        if (isset($_POST['title'])) {
+                                    
+            if (
+                isset($_POST['title'])    && !empty($_POST['title'])    &&
+                isset($_POST['category']) && !empty($_POST['category']) &&
+                isset($_POST['desc'])     && !empty($_POST['desc'])     &&
+                isset($_POST['value'])    && !empty($_POST['value'])    &&
+                isset($_POST['state'])    && !empty($_POST['state'])
+            ) {
+                $id         = $ads['id'];
+                $title      = trim(addslashes($_POST['title']));
+                $category   = addslashes($_POST['category']);
+                $desc       = trim(addslashes($_POST['desc']));
+                $value      = str_replace(',', '.', str_replace('.', '', addslashes($_POST['value']))); 
+                $state      = addslashes($_POST['state']);                  
+                
+                $imgs = array(
+                    'add' => (isset($_POST['add-imgs'])) ? $_POST['add-imgs'] : array(), 
+                    'del' => (isset($_POST['del-imgs'])) ? $_POST['del-imgs'] : array(),
+                    'ckd' => array(
+                        'alter' =>  (((isset($_POST['imgckd'])) ? $_POST['imgckd'] : '') !== $ads['imgckd']) ? true : false,
+                        'imgckd' => (isset($_POST['imgckd'])) ? $_POST['imgckd'] : ''
+                    )
+                );
+
+                if ($a->edit($id, $title, $category, $desc, $value, $state, $imgs)) {
+                    header('Location: '.BASE_URL.'meus-anuncios');
+                
+                } else {
+                    $data['msg']['class'] = 'warning';
+                    $data['msg']['msg']   = 'Ooops! ocorreu um erro, por favor, tente novamente mais tarde.';
+                };
+            } else {                   
+                $data['msg']['class'] = 'danger';
+                $data['msg']['msg']   = 'Preencha todos os campos!';
+            };
+        };
+        
+        $this->loadViewInTemplate('edit-anuncio', $data, 'template');
     }
 
     public function del($id)

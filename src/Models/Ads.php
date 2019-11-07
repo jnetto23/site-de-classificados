@@ -207,7 +207,7 @@ class Ads extends Model
         
         // Tratando as imagens
         $ckd_img = ($imgs['ckd']['alter']) ? $imgs['ckd']['imgckd'] : '';
-            
+        
         $del_imgs = (count($imgs['del']) > 0) ? $this->deleteFileImgs($imgs['del']) : '';
         $formatAddImgs = $this->formatAdsImgs($imgs['add'], $ckd_img);
         $add_imgs = $formatAddImgs['add'];
@@ -267,7 +267,7 @@ class Ads extends Model
             list(, $dados) = explode(',', $dados);
 
             // Verificando o ckd
-            $ckd = ($name === $ckd) ? '1' : '0';
+            $verifyCkd = (trim($name) == trim($ckd)) ? '1' : $ckd;
 
             // Verificando o tipo da imagem
             if (in_array($tipo, array('image/jpeg', 'image/png'))) {
@@ -276,7 +276,7 @@ class Ads extends Model
                 $name = md5($name . uniqid(time() . rand(0,9999)) . time() . rand(0,9999)).'.jpg';
                 
                 // Seta o ckd
-                if ($ckd === '1') {$imgCkd = $name;};
+                if ($verifyCkd === '1') {$imgCkd = $name;};
 
                 // Adiciona a imagem no array de imagens
                 $imgArray[] = $name;

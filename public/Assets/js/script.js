@@ -1,5 +1,3 @@
-'use strict';
-
 if(document.getElementById('form-signup')) {
     let form = document.getElementById('form-signup');
     let pwd = form.querySelector('input[name=pwd]');
