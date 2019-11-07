@@ -88,7 +88,7 @@ class AdsController extends Controller
         $c = new Category();
         $cats = $c->getList();
 
-        if (count($ads) === 0) {
+        if (empty($ads['id'])) {
             header('Location: '.BASE_URL.'meus-anuncios');
         };
         
