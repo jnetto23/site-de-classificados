@@ -3,14 +3,28 @@
 namespace Fyyb\Controllers;
 
 use \Fyyb\Core\Controller;
-use \Fyyb\Models\User;
+use \Fyyb\Models\Ads;
 
 class AdsController extends Controller
 {
+    public function __construct() 
+    {
+        if (!isset($_SESSION['cLogin']) || empty($_SESSION['cLogin'])) 
+        { 
+            header('Location: '.BASE_URL.'login'); 
+            exit;
+        };
+    }
     public function index()
     {   
-        $data = array();
-        $this->loadViewInTemplate('', $data, 'template');
+        
+        $ads = new Ads();
+        
+        $data = array(
+            'ads' => $ads->getUserList()
+        );
+
+        $this->loadViewInTemplate('meus-anuncios', $data, 'template');
     }
 
     public function add()
