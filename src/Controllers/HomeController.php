@@ -10,6 +10,6 @@ class HomeController extends Controller
     public function index()
     {   
         $data = array();
-        $this->loadViewInTemplate('', $data, 'template');
+        $this->loadViewInTemplate('home', $data, 'template');
     }
 }
