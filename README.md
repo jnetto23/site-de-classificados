@@ -80,7 +80,6 @@ Create backend/frontend of the a simple ads/classified system.
           />
         </td>
       </tr>
-
       <tr>
         <td style="text-align: center; vertical-align: baseline;">
           <h4 style="text-transform: uppercase;">Home with filter</h4>
