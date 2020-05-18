@@ -20,5 +20,8 @@
             "environment.php",
             "config.php"
         ]
+    },
+    "require": {
+        "fyyb/express": "^2.4"
     }
 }
