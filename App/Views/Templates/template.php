@@ -1,15 +1,34 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <base href="http://localhost/github/public_projects/site-de-classificados/">
-
+    <!-- SEO -->
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
+    <meta http-equiv='X-UA-Compatible' content='ie=edge' />
+    <base href='https://fyyb.com.br/preview/classificados-php/' />
+    <title>Classificados PHP</title>
+    <meta name='description' content='Sistema simples de classificados construido com PHP, é possivel se cadastrar e criar seus prórpios anúncios.'/>
+    <meta name='keywords' content='fyyb, jnetto23, Classificados PHP, PHP, MySql, fyyb/express, portfolio, case study, estudo'/>
+    <meta name='robots' content='index,follow' />
+    <meta name='rating' content='General' />
+    <meta name='copyright'content='Fyyb'>
+    <link rel='canonical' href='https://fyyb.com.br/preview/classificados-php/' />
+    <!-- Localização -->
+    <meta name='geo.placename' content='São Paulo-SP'>
+    <meta name='geo.region' content='SP-BR'>
+    <!-- Meta Tags Facebook (https://ogp.me/) -->
+    <meta property='og:url' content='https://fyyb.com.br/preview/classificados-php/'>
+    <meta property='og:site_name' content='Classificados PHP'>
+    <meta property='og:title' content='Classificados PHP'>
+    <meta property='og:description' content='Sistema simples de classificados construido com PHP, é possivel se cadastrar e criar seus prórpios anúncios.'>
+    <meta property='og:type' content='website'>
+    <meta property='og:image' content='https://fyyb.com.br/preview/classificados-php/screenshots/ads_site-home.png'>
+    <meta property='og:region' content='Brasil'>
+    <meta property='fb:admins' content='605931989767491'>
+    
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="<?=VIEWS['ASSETS']?>css/style.css">
-    <title>Site de Classificados</title>
 </head>
 <body>
     <header>
