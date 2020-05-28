@@ -3,6 +3,3 @@ composer.lock
 
 settings.php
 httpd-vhosts.conf
-
-App/Views/Assets/img/ads/
-!App/Views/Assets/img/ads/default.png
