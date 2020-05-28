@@ -1,8 +1,8 @@
 vendor
 composer.lock
 
-config.php
+settings.php
 httpd-vhosts.conf
 
-public/Assets/img/ads/
-!public/Assets/img/ads/default.png
+App/Views/Assets/img/ads/
+!App/Views/Assets/img/ads/default.png

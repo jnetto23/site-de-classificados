@@ -13,13 +13,8 @@
     ],
     "autoload": {
         "psr-4": {
-            "Fyyb\\": "src/"
-        },
-        "files": [
-            "./src/routes.php",
-            "environment.php",
-            "config.php"
-        ]
+            "App\\": "App/"
+        }
     },
     "require": {
         "fyyb/express": "^2.4"
